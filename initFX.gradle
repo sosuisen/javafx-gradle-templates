@@ -1,0 +1,14 @@
+/*
+-------------------------------------------------------------------------------
+Gradle Project Creation Wizard Init Script for JavaFX Project
+-------------------------------------------------------------------------------
+*/
+allprojects {
+	ant.copy(todir: '') {
+		fileset (
+			dir: '../.metadata/init.gradle_template_javafx',
+			defaultexcludes: 'no',
+			excludes: '**/thumbs.db, **/desktop.ini, **/.DS_Store', 
+		)
+	}
+}
