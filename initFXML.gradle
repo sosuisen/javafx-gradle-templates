@@ -1,7 +1,5 @@
 /*
--------------------------------------------------------------------------------
-Gradle Project Creation Wizard Init Script for JavaFX FXML Project
--------------------------------------------------------------------------------
+  Gradle Project Creation Wizard Init Script for JavaFX FXML Project
 */
 allprojects {
 	ant.copy(todir: '') {
@@ -11,4 +9,11 @@ allprojects {
 			excludes: '**/thumbs.db, **/desktop.ini, **/.DS_Store', 
 		)
 	}
+	String debugFile = new File( projectDir.toString() + '/.settings/debug.launch' ).getText( 'UTF-8' )
+	debugFile = debugFile.replaceAll( 'MY_PROJECT_NAME', project.name )
+	new File( projectDir.toString() + '/.settings/' + project.name + '-debug.launch' ).write( debugFile, 'UTF-8' )
+
+	String remoteDebugFile = new File( projectDir.toString() + '/.settings/remotedebug.launch' ).getText( 'UTF-8' )
+	remoteDebugFile = remoteDebugFile.replaceAll( 'MY_PROJECT_NAME', project.name )
+	new File( projectDir.toString() + '/.settings/' + project.name + '-remotedebug.launch' ).write( remoteDebugFile, 'UTF-8' )
 }
