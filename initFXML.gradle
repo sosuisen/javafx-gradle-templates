@@ -9,11 +9,18 @@ allprojects {
 			excludes: '**/thumbs.db, **/desktop.ini, **/.DS_Store', 
 		)
 	}
-	String debugFile = new File( projectDir.toString() + '/.settings/debug.launch' ).getText( 'UTF-8' )
-	debugFile = debugFile.replaceAll( 'MY_PROJECT_NAME', project.name )
-	new File( projectDir.toString() + '/.settings/' + project.name + '-debug.launch' ).write( debugFile, 'UTF-8' )
+	File debugFile = new File( projectDir.toString() + '/.settings/debug.launch' )
+	String debugText = debugFile.getText( 'UTF-8' ).replaceAll( 'MY_PROJECT_NAME', project.name )
+	new File( projectDir.toString() + '/.settings/' + project.name + '-debug.launch' ).write( debugText, 'UTF-8' )
+	debugFile.delete();
 
-	String remoteDebugFile = new File( projectDir.toString() + '/.settings/remotedebug.launch' ).getText( 'UTF-8' )
-	remoteDebugFile = remoteDebugFile.replaceAll( 'MY_PROJECT_NAME', project.name )
-	new File( projectDir.toString() + '/.settings/' + project.name + '-remotedebug.launch' ).write( remoteDebugFile, 'UTF-8' )
+	File runFile = new File( projectDir.toString() + '/.settings/run.launch' )
+	String runText = runFile.getText( 'UTF-8' ).replaceAll( 'MY_PROJECT_NAME', project.name )
+	new File( projectDir.toString() + '/.settings/' + project.name + '-run.launch' ).write( runText, 'UTF-8' )
+	runFile.delete();
+
+	File remoteDebugFile = new File( projectDir.toString() + '/.settings/remotedebug.launch' )
+	String remoteDebugText = remoteDebugFile.getText( 'UTF-8' ).replaceAll( 'MY_PROJECT_NAME', project.name )
+	new File( projectDir.toString() + '/.settings/' + project.name + '-remotedebug.launch' ).write( remoteDebugText, 'UTF-8' )
+	remoteDebugFile.delete();
 }
