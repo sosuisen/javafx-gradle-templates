@@ -13,6 +13,11 @@ public class MyAppController {
 	@FXML
 	private Label label;
 
+	@FXML
+	void buttonOnAction(ActionEvent event) {
+		Platform.exit();
+	}
+
 	public void initialize() {
 		var javaVersion = System.getProperty("java.version");
 		var javafxVersion = System.getProperty("javafx.version");
