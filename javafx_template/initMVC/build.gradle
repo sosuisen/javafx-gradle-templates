@@ -9,10 +9,10 @@ plugins {
 }
 
 ext {
-    moduleName = 'myapp'
+    moduleName = 'mvcapp'
     packageName = 'com.example'
-    entryPoint = "${packageName}.MyApp"
-    executableName = 'MyApp'
+    entryPoint = "${packageName}.MvcApp"
+    executableName = 'MvcApp'
 }
 
 repositories {
