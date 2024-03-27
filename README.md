@@ -6,5 +6,7 @@ JavaFX Templates for Eclipse Buildship (Eclipse Plug-ins for Gradle)
 2) File > New > Gradle project
 - Vanilla JavaFX
   - Rewrite default program arguments from '../.metadata/init.gradle' to '../.metadata/initFX.gradle'
-- Use FXML
+- Simple FXML template
   - Rewrite default program arguments from '../.metadata/init.gradle' to '../.metadata/initFXML.gradle' 
+- Simple MVC template
+  - Rewrite default program arguments from '../.metadata/init.gradle' to '../.metadata/initMVC.gradle' 
