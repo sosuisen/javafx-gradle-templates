@@ -1,26 +1,25 @@
 /*
-  Gradle Project Creation Wizard Init Script for JavaFX Project
+  Gradle Project Creation Wizard Init Script
+  For a Simple JavaFX Project
 */
 allprojects {
+
 	ant.copy(todir: '') {
-		fileset (
-			dir: '../.metadata/init.gradle_template_javafx',
-			defaultexcludes: 'no',
-			excludes: '**/thumbs.db, **/desktop.ini, **/.DS_Store', 
-		)
+		// Copy project files from customized template dir
+		fileset(dir: '../.metadata/javafx_template/initFX')
+
+		// Copy gradle wrapper from original template dir
+		fileset(dir: '../.metadata/init.gradle_template') {
+			include(name: 'gradle*')
+			include(name: 'gradle/**')
+		}
 	}
-	File debugFile = new File( projectDir.toString() + '/.settings/debug.launch' )
-	String debugText = debugFile.getText( 'UTF-8' ).replaceAll( 'MY_PROJECT_NAME', project.name )
-	new File( projectDir.toString() + '/.settings/' + project.name + '-debug.launch' ).write( debugText, 'UTF-8' )
-	debugFile.delete();
 
-	File runFile = new File( projectDir.toString() + '/.settings/run.launch' )
-	String runText = runFile.getText( 'UTF-8' ).replaceAll( 'MY_PROJECT_NAME', project.name )
-	new File( projectDir.toString() + '/.settings/' + project.name + '-run.launch' ).write( runText, 'UTF-8' )
-	runFile.delete();
-
-	File remoteDebugFile = new File( projectDir.toString() + '/.settings/remotedebug.launch' )
-	String remoteDebugText = remoteDebugFile.getText( 'UTF-8' ).replaceAll( 'MY_PROJECT_NAME', project.name )
-	new File( projectDir.toString() + '/.settings/' + project.name + '-remotedebug.launch' ).write( remoteDebugText, 'UTF-8' )
-	remoteDebugFile.delete();
+	// Create .launch files in .settings dir
+	def settingsDir = "${projectDir}/.settings"
+	['debug', 'run', 'remotedebug'].each { launchType ->
+		def templateFile = new File("${projectDir}/../.metadata/javafx_template/launch_files/${launchType}.launch")
+		def templateText = templateFile.text.replace('MY_PROJECT_NAME', project.name)
+		new File("${settingsDir}/${project.name}-${launchType}.launch").text = templateText
+	}
 }
