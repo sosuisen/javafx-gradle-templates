@@ -28,7 +28,6 @@ public class MvcApp extends Application {
 
 			// Build scene and stage to show View on the screen
 			var scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
 			stage.setTitle("Memo");
 			stage.setScene(scene);
 			stage.show();
