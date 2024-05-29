@@ -19,7 +19,7 @@ public class Model {
 		} catch (NoSuchFileException e) {
 			System.out.println("File not found: " + filePath);
 		}
-		catch (IOException e) {
+		catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
